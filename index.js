@@ -1,6 +1,8 @@
 const dotenv = require("dotenv")
 const express = require("express")
 const mongoose = require("mongoose")
+const cookies = require("cookie-parser")
+const morgan = require("morgan")
 
 dotenv.config()
 const PORT = process.env.PORT
@@ -12,6 +14,10 @@ async function start() {
     console.log("==> Connected to database")
 
     const app = express()
+
+    app.use(express.json())
+    app.use(cookies())
+    app.use(morgan())
 
     app.listen(PORT, function (error) {
       if (error) {
