@@ -1,10 +1,9 @@
 const { Router } = require("express")
 
+const usersRouter = require("./users/router")
+
 const router = Router()
 
-router.get("/", function (req, res) {
-  console.log("request accepted")
-  res.end()
-})
+router.use("/users", usersRouter)
 
 module.exports = router

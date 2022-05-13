@@ -4,6 +4,8 @@ const mongoose = require("mongoose")
 const cookies = require("cookie-parser")
 const morgan = require("morgan")
 
+const v1 = require("#v1/router")
+
 dotenv.config()
 const PORT = process.env.PORT
 const MONGODB_URI = process.env.MONGODB_URI
@@ -15,9 +17,11 @@ async function start() {
 
     const app = express()
 
+    app.use(morgan("combined"))
     app.use(express.json())
     app.use(cookies())
-    app.use(morgan())
+
+    app.use("/v1", v1)
 
     app.listen(PORT, function (error) {
       if (error) {

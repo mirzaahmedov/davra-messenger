@@ -16,6 +16,10 @@
     "start": "node index",
     "dev": "nodemon index"
   },
+  "imports": {
+    "#utils/*": "./utils/*.js",
+    "#v1/*": "./v1/*.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mirzaahmedov/davra-messenger.git"
